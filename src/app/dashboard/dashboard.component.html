@@ -1,0 +1,50 @@
+<div class="container-fluid bg-light">
+    <div class="container bg-light">
+        <div class="row mt-5" style="height: 600px;">
+            <div class="col"></div>
+            <div class="col-md-6 bg-white shadow">
+                <div class="card bg-primary mt-3">
+                    <h4 class="text-white text-center ps-2 pt-2 pb-2">TO-DO</h4>
+                </div>
+                <div class="shadow p-3">
+                    <div class="input-group mb-3 mt-2">
+                        <input type="text" class="form-control" placeholder="Enter Your Task" [(ngModel)]="addTaskData">
+                        <button class="btn btn-outline-success" type="button" (click)="addTask()">Add</button>
+                    </div>
+                </div>
+
+                <h3 class="text-primary mt-3 text-center">TASK</h3>
+                <div style="overflow-y: auto;height: 350px;">
+                    <div class="m-3" *ngFor="let data of taskArr">
+                        <div class="p-2 shadow ">
+                            <div class="input-group row ps-3">
+                                <div class="card col-md-8 border-0">{{data.task}}</div>
+                                <button class="btn btn-outline-primary col me-1 " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="callEdit(data)">Edit</button>
+                                <button class="btn btn-outline-danger col" (click)="deleteTask(data)">X</button>
+                            </div>
+                        </div>
+                        <div class="modal" tabindex="-1" id="exampleModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Update</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" class="form-control" placeholder="Enter Your Task" [(ngModel)]="editTaskData">
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" (click)="editTask()" data-bs-dismiss="modal" >Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>
